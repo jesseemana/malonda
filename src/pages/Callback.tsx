@@ -9,24 +9,24 @@ const Callback = () => {
   const navigate = useNavigate()
 
   let tx_rf: string
-  if (window.location.href.split('?')[1].startsWith('status')) {
-    tx_rf = (window.location.href.split('?')[1].split('status=failed&tx_ref=')[1])
-  } else {
-    tx_rf = (window.location.href.split('?tx_ref=')[1])
-  }
+  // if (window.location.href.split('?')[1].startsWith('status')) {
+  //   tx_rf = (window.location.href.split('?')[1].split('status=failed&tx_ref=')[1])
+  // } else {
+  //   tx_rf = (window.location.href.split('?tx_ref=')[1])
+  // }
 
-  async function verifyRequest() {
-    try {
-      await axios.get(`/api/verify/${tx_rf}`)
-      toast.success('Payment complete')
-    } catch (error) {
-      toast.error('Payment failed')
-    } finally {
-      navigate('/')
-    }
-  }
+  // async function verifyRequest() {
+  //   try {
+  //     await axios.get(`/api/verify/${tx_rf}`)
+  //     toast.success('Payment complete')
+  //   } catch (error) {
+  //     toast.error('Payment failed')
+  //   } finally {
+  //     navigate('/')
+  //   }
+  // }
 
-  useQuery('verify', verifyRequest)
+  // useQuery('verify', verifyRequest)
 
   return (
     <div className='grid place-items-center'>
