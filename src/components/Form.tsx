@@ -1,10 +1,10 @@
 import React from 'react'
 import Input from './Input'
-import { z } from 'zod';
+import { z } from 'zod'
 import { Button } from './ui/button'
 import { Loader2 } from 'lucide-react'
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
 
 const userDetailsSchema = z.object({
   first_name: z.string()

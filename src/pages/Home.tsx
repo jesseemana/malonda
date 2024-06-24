@@ -2,6 +2,7 @@ import React from 'react'
 import axios from '../api/axios'
 import Checkout from '../components/Checkout'
 import { Button } from '../components/ui/button'
+import { BeatLoader } from 'react-spinners'
 import { useQuery } from 'react-query'
 import { Dialog, DialogTrigger, DialogContent, } from '../components/ui/dialog'
 
@@ -19,11 +20,10 @@ const Home = () => {
   }
 
   const { data: products, isLoading } = useQuery('getAllProducts', getProducts)
-
-  if (isLoading) return <p>loading...</p>
   
   return (
     <main className='py-20 px-4'>
+      {isLoading ? <Loader /> : 
       <div className='flex flex-col md:grid grid-cols-3 gap-4'>
         {products && products.map((product) => (
           <div key={product._id} className='flex flex-col'>
@@ -50,8 +50,16 @@ const Home = () => {
             </div>
           </div>
         ))}
-      </div>
+      </div>}
     </main>
+  )
+}
+
+export function Loader() {
+  return (
+    <div className='mt-[280px] flex flex-col items-center'>
+      <BeatLoader color="#36d7b7" />
+    </div>
   )
 }
 
