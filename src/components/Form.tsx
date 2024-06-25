@@ -77,7 +77,7 @@ const Form = ({ onCheckout, isSubmitting }: {
         <Button 
           disabled
           type='button' 
-          className={`rounded-sm cursor-not-allowed`}
+          className={`rounded-sm hover:cursor-not-allowed`}
         >
           <Loading />
         </Button> : (
