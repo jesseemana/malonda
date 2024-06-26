@@ -1,10 +1,8 @@
 import React from 'react'
 import axios from '../api/axios'
 import Checkout from '../components/Checkout'
-import { BeatLoader } from 'react-spinners'
 import { useQuery } from 'react-query'
-import { Button } from '../components/ui/button'
-import { Dialog, DialogTrigger, DialogContent, } from '../components/ui/dialog'
+import { BeatLoader } from 'react-spinners'
 
 type ProductType = {
   _id: string
@@ -19,17 +17,18 @@ const Home = () => {
     return response.data
   }
 
-  const { data: products, isLoading } = useQuery('getAllProducts', getProducts)
+  const { data: results, isLoading } = useQuery('getAllProducts', getProducts)  
+  const products = results!
   
   return (
     <main className='py-20 px-4'>
       {isLoading ? <Loader /> : (
         <div className='flex flex-col md:grid grid-cols-3 gap-4'>
-          {products && products.map((product) => (
+          {products.map((product) => (
             <div key={product._id} className='flex flex-col'>
               <img 
                 src={product.image} 
-                alt='product image' 
+                alt={`${product.name}'s image`} 
                 className='md:h-[260px] bg-neutral-50'
               />
               <div className='p-2 space-y-2'>
@@ -37,16 +36,7 @@ const Home = () => {
                   <span>{product.name}</span>
                   <span>MWK{(product.price).toFixed(2)}</span>
                 </p>
-                <Dialog>
-                  <DialogTrigger>
-                    <Button className='md:w-[420px] w-[380px] text-xl rounded-sm'>
-                      Buy now
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent>
-                    <Checkout amount={product.price} />
-                  </DialogContent>
-                </Dialog>
+                <Checkout amount={product.price} />
               </div>
             </div>
           ))}
@@ -59,7 +49,7 @@ const Home = () => {
 export function Loader() {
   return (
     <div className='mt-[280px] flex flex-col items-center'>
-      <BeatLoader color="#36d7b7" />
+      <BeatLoader color='#36d7b7' />
     </div>
   )
 }

@@ -2,6 +2,8 @@ import React from 'react'
 import axios from '../api/axios'
 import Form, { SubmitData } from './Form'
 import { useMutation } from 'react-query'
+import { Button } from '../components/ui/button'
+import { Dialog, DialogTrigger, DialogContent, } from '../components/ui/dialog'
 
 type CheckOutData = {
   first_name: string
@@ -33,12 +35,19 @@ const Checkout = ({ amount }: { amount: number }) => {
   }
 
   return (
-    <>
-      <Form 
-        onCheckout={onCheckout} 
-        isSubmitting={isLoading} 
-      />
-    </>
+    <Dialog>
+      <DialogTrigger>
+        <Button className='md:w-[420px] w-[380px] text-xl rounded-sm'>
+          Buy now
+        </Button>
+      </DialogTrigger>
+      <DialogContent>
+        <Form 
+          onCheckout={onCheckout} 
+          isSubmitting={isLoading} 
+        />
+      </DialogContent>
+    </Dialog>
   )
 }
 
