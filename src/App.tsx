@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <header className='fixed shadow-sm w-full bg-white py-4'>
-        <p className='text-center font-semibold italic text-3xl capitalize'>
+        <p className='text-center font-medium text-3xl capitalize'>
           online shop
         </p>
       </header>
