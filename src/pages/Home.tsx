@@ -29,7 +29,7 @@ const Home = () => {
               <img 
                 src={product.image} 
                 alt={`${product.name}'s image`} 
-                className='md:h-[260px] bg-neutral-50'
+                className='lg:h-[260px] md:h-[180px] bg-neutral-50'
               />
               <div className='p-2 space-y-2'>
                 <p className='flex text-2xl capitalize font-semibold justify-between'>
